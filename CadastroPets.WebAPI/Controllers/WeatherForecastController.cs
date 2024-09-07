@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Cadastro.Pets.Controllers
+namespace CadastroPets.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

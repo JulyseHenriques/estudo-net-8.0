@@ -1,4 +1,4 @@
-namespace API.Cadastro.Pets
+namespace CadastroPets.WebAPI
 {
     public class WeatherForecast
     {
