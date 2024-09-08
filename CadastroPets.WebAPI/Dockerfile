@@ -12,10 +12,14 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["CadastroPets.WebAPI.csproj", "."]
-RUN dotnet restore "./CadastroPets.WebAPI.csproj"
+COPY ["CadastroPets.WebAPI/CadastroPets.WebAPI.csproj", "CadastroPets.WebAPI/"]
+COPY ["CadastroPets.Application/CadastroPets.Application.csproj", "CadastroPets.Application/"]
+COPY ["CadastroPets.Infrastructure/CadastroPets.Infrastructure.csproj", "CadastroPets.Infrastructure/"]
+COPY ["CadastroPets.Domain/CadastroPets.Domain.csproj", "CadastroPets.Domain/"]
+RUN dotnet restore "./CadastroPets.WebAPI/CadastroPets.WebAPI.csproj"
+
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/CadastroPets.WebAPI"
 RUN dotnet build "./CadastroPets.WebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
