@@ -1,5 +1,6 @@
 ﻿using CadastroPets.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace CadastroPets.Infrastructure.Data
 {

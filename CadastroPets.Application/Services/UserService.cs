@@ -17,8 +17,9 @@ namespace CadastroPets.Application.Services
 
         #region Constructors
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IMapper mapper, IUserRepository userRepository)
         {
+            _mapper = mapper;
             _userRepository = userRepository;
         }
 
@@ -28,8 +29,8 @@ namespace CadastroPets.Application.Services
 
         public UserDto GetUserById(int id)
         {
-            var user = _userRepository.GetByIdAsync(id);
-            var userDto = _mapper.Map<UserDto>(user);
+            var user = _userRepository.GetByIdAsync(id).Result;
+            var userDto = user != null ? _mapper.Map<UserDto>(user) : new UserDto();
             return userDto;
         }
 

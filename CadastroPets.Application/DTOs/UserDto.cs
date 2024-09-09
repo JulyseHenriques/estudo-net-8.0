@@ -4,6 +4,8 @@ namespace CadastroPets.Application.DTOs
 {
     public class UserDto
     {
+        public UserDto() { }
+
         public UserDto(string name, string email, int id)
         {
             this.Id = id;
